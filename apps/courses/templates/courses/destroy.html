@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Courses</title>
+   <meta name="Courses" content="Courses Project">
+
+</head>
+
+<body>
+   <h2>Are you sure you want to delete the following course?</h2>
+   <p>Name: {{  course.name  }}</p>
+   <p>Description:
+      {%  for description in course.description_set.all  %}
+         {{  description.description  }}
+      {%  endfor  %}</p>
+   <a href="/"><button>no</button></a>
+   <a href="/courses/delete/{{  course.id  }}"><button>Yes! I want to delete this</button></a>
+</body>
+
+</html>

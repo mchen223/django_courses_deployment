@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Courses</title>
+   <meta name="Courses" content="Courses Project">
+
+</head>
+
+<body>
+   <p>Name: {{course.name}}</p>
+   <p>Description:
+      {% for description in course.description_set.all %}
+         {{description.description}}
+      {% endfor %}</p>
+   <p>Comments:</p>
+   <ul>
+      {%  for comment in comment  %}
+         <li>{{  comment.comment  }}</li>
+      {%  endfor  %}
+   </ul>
+
+   <form action="/courses/comment/{{  course.id  }}" method="POST">
+      {%  csrf_token  %}
+      <input type="textarea" name="comment">
+      <br>
+      <br>
+      <input type="submit" value="Comment">
+   </form>
+   <br>
+   <a href='/'><button>Return to Courses</button></a>
+
+</body>
+
+</html>
